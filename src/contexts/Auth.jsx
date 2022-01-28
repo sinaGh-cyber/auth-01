@@ -25,10 +25,11 @@ const initState = { loggedIn: false }
 
 const AuthProvider = ({ children }) => {
   // 01. use "getLocalStorage" function for initialize user state with "initState" constant value
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(getLocalStorage('myUser', initState))
 
   useEffect(() => {
     // 02. set new state value in localStorage
+    setLocalStorage('myUser', user)
   }, [user])
 
   const toggleAuth = () => {
